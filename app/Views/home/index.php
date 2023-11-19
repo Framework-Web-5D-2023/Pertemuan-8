@@ -29,7 +29,11 @@
           <td><?= $m["nama"]; ?></td>
           <td><?= $m["npm"]; ?></td>
           <td><?= $m["prodi"]; ?></td>
-          <td><a href="<?= site_url("/" . $m["id"]); ?>" class="btn btn-primary btn-sm">Detail</a></td>
+          <td>
+            <a href="<?= site_url("delete/" . $m["id"]); ?>" class="btn btn-danger btn-sm">Delete</a>
+            <a href="<?= site_url("/" . $m["id"]); ?>" class="btn btn-secondary btn-sm">Detail</a>
+            <a href="<?= site_url("updateMahasiswa/" . $m["id"]); ?>" class="btn btn-primary btn-sm">Update</a>
+          </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
@@ -85,7 +89,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="domiisili">Domiisili</label>
-                    <input type="text" id="domiisili" name="domiisili" class="form-control" placeholder="domiisili" aria-label="domiisili">
+                    <input type="text" id="domiisili" name="domisili" class="form-control" placeholder="domiisili" aria-label="domiisili">
                   </div>
                 </div>
                 <div class="col-6">
@@ -108,4 +112,12 @@
     </div>
   </div>
 </div>
+<?= $this->endSection(); ?>
+
+<?= $this->section("script"); ?>
+<script>
+  function sendIdDataDelete() {
+
+  }
+</script>
 <?= $this->endSection(); ?>

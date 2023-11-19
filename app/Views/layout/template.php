@@ -18,8 +18,7 @@
 
 <script type="text/javascript" src="<?= site_url("assets/bootstrap.js"); ?>"></script>
 
-<script>
-  // codingan javascript
-</script>
+
+<?= $this->renderSection('script') ?>
 
 </html>
