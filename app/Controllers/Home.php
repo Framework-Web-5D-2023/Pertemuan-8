@@ -39,6 +39,35 @@ class Home extends BaseController
 
   public function createMahasiswa()
   {
+    if (!$this->validate([
+      'image' => [
+        'rules' => [
+          'is_image[image]',
+          'mime_in[image,image/jpg,image/jpeg,image/png,image/webp]',
+          'max_size[image,1024]',
+        ],
+        'errors' => [
+          'max_size' => 'ukuran gambar terllau besar',
+          'is_image' => 'please input format gambar',
+          'mime_in' => 'please input gambar'
+        ],
+      ],
+    ])) {
+      $this->session->setFlashData("error", "Failed for add data please check your image");
+      return redirect()->to(base_url("/"));
+    }
+
+    // ambil gambar
+    $fileImage = $this->request->getFile('image');
+    if ($fileImage->getError() == 4) {
+      $namaImage = 'default.jpg';
+    } else {
+      // generate nama image biar random
+      $namaImage = $fileImage->getRandomName();
+      // pindahkan gambar Image ke file kita dan pada folder public/img 
+      $fileImage->move('image', $namaImage);
+    }
+
     $nama = $this->request->getVar("nama");
     $npm = $this->request->getVar("npm");
     $prodi = $this->request->getVar("prodi");
@@ -53,8 +82,8 @@ class Home extends BaseController
       "minat" => $minat,
       "domisili" => $domisili,
       "jenis_kelamin" => $jenis_kelamin,
+      "image" => $namaImage,
     ];
-
     $this->mahasiswaModel->create($data);
     $this->session->setFlashData("success", "Mahasiswa has been added");
     return redirect()->to(base_url("/"));
@@ -67,6 +96,7 @@ class Home extends BaseController
     $data = [
       "title" => "Update Mahasiswa",
       "mahasiswa" => $mahasiswa,
+      'validation' => \Config\Services::validation(),
     ];
 
     return view("home/update", $data);
@@ -74,6 +104,23 @@ class Home extends BaseController
 
   public function updateMahasiswaAction($id)
   {
+    if (!$this->validate([
+      'nama' => [
+        'rules' => 'required|is_unique[mahasiswa.nama]',
+        'errors' => [
+          'required' => '{field} harus diisi',
+          'is_unique' => '{field} sudah digunakan'
+        ]
+      ],
+      'npm' => 'required',
+      'prodi' => 'required',
+      'minat' => 'required',
+      'domisili' => 'required',
+      'jenis_kelamin' => 'required',
+    ])) {
+      return redirect()->to(base_url("updateMahasiswa/" . $id))->withInput();
+    }
+
 
     $nama = $this->request->getVar("nama");
     $npm = $this->request->getVar("npm");
