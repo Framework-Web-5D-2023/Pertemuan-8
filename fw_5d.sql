@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2023 at 04:48 AM
+-- Generation Time: Nov 27, 2023 at 05:35 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -46,16 +46,7 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `npm`, `prodi`, `minat`, `domisili`, `jenis_kelamin`, `image`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(4, 'admin@gmail.com', '123', 'INFORMATIKA', NULL, NULL, NULL, NULL, '2023-10-25', '2023-10-25', NULL),
-(20, 'VITO', '12', 'Informatika', 'Web Developer', NULL, 'L', NULL, '2023-10-27', '2023-10-27', NULL),
-(21, 'VITO', '2010631170044', 'Informatika', 'Web Developer', NULL, 'L', NULL, '2023-11-01', '2023-11-01', NULL),
-(22, 'Malik', '21312312', 'Informatika', 'Web Developer', 'Cikarang', 'L', NULL, '2023-11-01', '2023-11-01', NULL),
-(23, 'shopia', '123123121111', 'Informatika', 'Web Developer', 'PWK', 'P', NULL, '2023-11-01', '2023-11-01', NULL),
-(24, 'bahar', '21312131213', 'Informatika', 'Web Developer', 'Tangerang', 'L', NULL, '2023-11-01', '2023-11-01', NULL),
-(25, 'Alfian Vit', '122121212131', 'Informatika', 'Web Developer', 'Tangerang', 'L', NULL, '2023-11-01', '2023-11-01', NULL),
-(32, 'radit', '12122222', 'Informatika', 'Web Developer', 'Tangerang', 'L', NULL, '2023-11-01', '2023-11-01', NULL),
-(33, 'Rina', '201063117004411', 'Informatika', 'Web Developer', 'PWK', 'P', NULL, '2023-11-01', '2023-11-01', NULL),
-(35, 'Alfian Vit', '21312312111', 'Informatika', 'Web Developer', NULL, 'L', NULL, '2023-11-01', '2023-11-01', NULL);
+(46, 'Malik12', '201063117004412', 'SISTEM INFORMASI12', 'Web Developer2', 'bogor2', 'P', '1700458940_7c87d47e285f3586c02f.jpg', '2023-11-20', '2023-11-26', NULL);
 
 --
 -- Indexes for dumped tables
@@ -76,7 +67,7 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
